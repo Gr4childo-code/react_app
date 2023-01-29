@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# ДЗ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Как делать:
 
-## Available Scripts
+0. Сделать форк этого репозитория в свой аккаунт (только 1 раз в самом начале).
 
-In the project directory, you can run:
+1. Перед выполнением ДЗ сделайте мердж мастера этого репозитория себе в форк (чтобы иметь актуальный код);
+2. Обновить зависимости `yarn` или `npm i`;
+3. Создайте новую ветку от актуального мастера для выполнения ДЗ;
+4. Выполните ДЗ в этой ветке;
+5. Сделайте Pull Request этой ветки в мастер моего репозитория;
+6. Напишите мне (a.koretskiy@javascript.info) письмо со ссылкой на PR.
 
-### `yarn start`
+Дедлайн – 22:00 по Москве / 21:00 по Киеву за день до занятия.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## HT1
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Создать компоненту **Rate**, которая принимает рейтинг (число от 1 до 5) и его отображает (можно просто показать число, нарисовать звездочки и раскрасить их, и т.д.).
+2. Создать компоненту **Reviews**, где выводить имена и отзывы про рестораны и рейтинг с помощью компоненты **Rate**.
+3. Создать компоненту **Restaurant** (рендерить там, где сейчас **Menu**). В **Restaurant** показывать **Menu** и **Reviews**, а так же средний рейтинг с помощью компоненты **Rate**.
 
-### `yarn test`
+## HT2
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Покрыть **PropTypes** все компоненты (только то, что используется в компоненте).
+2. Написать тесты на уменьшение блюд. (опционально - без клика по increment).
+3. Покрыть тестами **Reviews**.
 
-### `yarn build`
+## HT3
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Сделать компонент **Basket** в котором отображать выбранные товары с их количеством, суммой по каждому товару и общей стоимостью заказа.
+2. Сделать у каждой позиции в этом заказе кнопки **+**, **-**, **х** (при нажатии на **х** удаляеься все количество товара)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## HT4
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Переписать редьюсеры **review** и **restaurant** на key=>value (аналогично **products**)
+2. Добавить **users** редьюсер (так же key=>value)
+3. Починить отображение **Review** компонента (взять данные из редьюсеров **review** и **users**)
+4. Переписать все обращения в к стейту в mapStateToProps на селекторы (аналогично компоненту **Basket**)
+5. Написать **middleware** для генерации **[uuid](https://github.com/uuidjs/uuid)**
+6. Реализовать добавление нового review в стор и показывать его
 
-### `yarn eject`
+## HT5
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Загрузить **products** через **api middleware**, грузить только для текущего ресторана
+2. Загрузить **users** через **redux-thunk**
+3. Дописать обратотку екшенынов **LOAD_REVIEWS** в **reviews** редьюсере
+4. Полностью убрать **fixtures** из приложения (удалить все импорты и сам файл), все грузить с сервера
+5. При загрузках показывать лоадеры, все грузить максимально низко, там где эти данные нужны
+6. Все данные грузить только один раз (не загружать повторно данные, которые уже есть)
+7. (Опционально) переписать все на **immer**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# HT6
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Сделать reviews/menu отдельными роутами (/restaurants/:id/reviews)
+2. В корзине сделать продукты линками на их ресторан
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## HT7
 
-## Learn More
+1. Сделать редирект со **/** и с **/restaurants** на страницу ресторана
+2. Проверить если мы на **/checkout**, то при нажатии на кнопку:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- отправить **POST** запрос на: '/api/order' с **JSON** формата [{id: "d75f762a-eadd-49be-8918-ed0daa8dd024", amount: 2}]
+- блокировать кнопку на время запроса (можно добавить лоадер)
+- при успешном ответе (при сумме заказа от 50 до 200) редиректить на новую страницу "Спасибо за заказ!" и очищать корзину
+- при ошибке редиректить на странцу ошибки, показать текст ошибки
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Реализовать переключение валюты, хранить словарь словарь в контексте (минимум 3 валюты). Реализовать таким образом, чтобы это было максимально удобный использовать.
+4. Анимировать добавление ревью использус css modules
