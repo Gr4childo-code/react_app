@@ -1,29 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import Restautants from './Restautants';
 
-const App = () => {
-	const [value, setValue] = useState(0);
-	const [foo, setFoo] = useState('foo');
-
-	useEffect(() => {
-		console.log('I have been mounted');
-	}, []);
-
-	useEffect(() => {
-		console.log('I have been updated');
-	}, [value, foo]);
-
-	const handleClick = () => {
-		setValue(value);
-		setFoo('foo');
-	};
-
-	return (
-		<div>
-			<h1>12321</h1>
-			<p>{value}</p>
-			<button onClick={handleClick}>+</button>
-		</div>
-	);
+const App = (props) => {
+	return <Restautants restaurants={props.restaurants} />;
 };
 
 export default App;
