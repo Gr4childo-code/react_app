@@ -1,0 +1,22 @@
+.card {
+	margin: 12px;
+	padding: 12px;
+	background-color: #ccc;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.counter {
+	display: flex;
+	align-items: center;
+}
+.btn_counter {
+	display: flex;
+	font-size: 25px;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	color: red;
+}
