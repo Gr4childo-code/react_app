@@ -1,0 +1,15 @@
+.reviews {
+	margin: 12px;
+	padding: 2px;
+	font-size: 20px;
+}
+.review {
+	border: 3px solid #eee;
+	border-radius: 10px;
+	background-color: #ccc;
+}
+.name {
+	font-weight: 700;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 5px;
+}
