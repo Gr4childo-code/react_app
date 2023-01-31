@@ -2,11 +2,11 @@ import React from 'react';
 import Restautants from '../restuatants';
 import Header from '../header';
 
-const App = (props) => {
+const App = ({ restaurants }) => {
 	return (
 		<div>
 			<Header />
-			<Restautants restaurants={props.restaurants} />
+			<Restautants restaurants={restaurants} />
 		</div>
 	);
 };
