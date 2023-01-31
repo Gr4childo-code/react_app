@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './product.module.css';
+import styles from './Product.module.css';
 import { ReactComponent as Minus } from '../../icons/minus.svg';
 import { ReactComponent as Plus } from '../../icons/plus.svg';
 import Counter from '../../hocs/Counter';
 
-const Product = ({ product, amount, increment, decrement }) => {
+const Product = ({ product, amount, increment, decrement, fetchData }) => {
 	return (
-		<div className={styles.product}>
+		<div data-id='product' className={styles.product}>
 			<div className={styles.content}>
 				<div>
 					<h4 className={styles.title}>{product.name}</h4>
@@ -17,12 +17,14 @@ const Product = ({ product, amount, increment, decrement }) => {
 				</div>
 				<div>
 					<div className={styles.counter}>
-						<div className={styles.count}>{amount}</div>
+						<div className={styles.count} data-id='product-amount'>
+							{amount}
+						</div>
 						<div className={styles.buttons}>
-							<button className={styles.button} onClick={decrement}>
+							<button className={styles.button} onClick={decrement} data-id='product-decrement'>
 								<Minus />
 							</button>
-							<button className={styles.button} onClick={increment}>
+							<button className={styles.button} onClick={increment} data-id='product-increment'>
 								<Plus />
 							</button>
 						</div>
