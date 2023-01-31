@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Product.module.css';
@@ -7,6 +7,11 @@ import { ReactComponent as Plus } from '../../icons/plus.svg';
 import Counter from '../../hocs/Counter';
 
 const Product = ({ product, amount, increment, decrement, fetchData }) => {
+	useEffect(() => {
+		fetchData && fetchData(product.id);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<div data-id='product' className={styles.product}>
 			<div className={styles.content}>
