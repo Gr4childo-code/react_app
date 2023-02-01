@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import styles from './Product.module.css';
 import { ReactComponent as Minus } from '../../icons/minus.svg';
 import { ReactComponent as Plus } from '../../icons/plus.svg';
-
 import { increment, decrement } from '../../redux/actions';
 
 const Product = ({ product, amount, increment, decrement, fetchData }) => {
@@ -57,11 +56,6 @@ Product.propTypes = {
 const mapStateToProps = (state, props) => ({
 	amount: state.order[props.product.id] || 0,
 });
-
-// const mapDispatchToProps = {
-// 	increment,
-// 	decrement,
-// };
 
 const mapDispatchToProps = (dispatch, props) => ({
 	increment: () => dispatch(increment(props.product.id)),

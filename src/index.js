@@ -7,8 +7,6 @@ import { restaurants } from './fixtures';
 
 import { store } from './redux/store';
 
-window.store = store;
-
 const root = createRoot(document.getElementById('root'));
 root.render(
 	<Provider store={store}>

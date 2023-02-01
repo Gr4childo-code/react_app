@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from './constants';
+import { INCREMENT, DECREMENT, REMOVE } from './constants';
 
 export const increment = (id) => ({
 	type: INCREMENT,
@@ -8,3 +8,4 @@ export const decrement = (id) => ({
 	type: DECREMENT,
 	id,
 });
+export const remove = (id) => ({ type: REMOVE, id });
