@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import styles from './Product.module.css';
 import { ReactComponent as Minus } from '../../icons/minus.svg';
 import { ReactComponent as Plus } from '../../icons/plus.svg';
-import Counter from '../../hocs/Counter';
+
+import { increment, decrement } from '../../redux/actions';
 
 const Product = ({ product, amount, increment, decrement, fetchData }) => {
 	useEffect(() => {
 		fetchData && fetchData(product.id);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line
 	}, []);
 
 	return (
@@ -46,9 +48,19 @@ Product.propTypes = {
 		price: PropTypes.number,
 		ingredients: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 	}).isRequired,
+	// from connect
 	amount: PropTypes.number,
 	increment: PropTypes.func,
 	decrement: PropTypes.func,
 };
 
-export default Counter(Product);
+const mapStateToProps = (state) => ({
+	amount: state.order,
+});
+
+const mapDispatchToProps = {
+	increment,
+	decrement,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

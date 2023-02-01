@@ -1,12 +1,16 @@
 import React from 'react';
-import Restautants from '../restuatants';
-import Header from '../header';
 import PropTypes from 'prop-types';
+
+import Header from '../header';
+import Basket from '../basket';
+
+import Restautants from '../restuatants';
 
 const App = ({ restaurants }) => {
 	return (
 		<div>
 			<Header />
+			<Basket />
 			<Restautants restaurants={restaurants} />
 		</div>
 	);
