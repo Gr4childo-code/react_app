@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Product from '../product';
 import styles from './menu.module.css';
+import Basket from '../basket';
 const Menu = ({ menu }) => {
 	return (
 		<div className={styles.menu}>
@@ -10,6 +11,9 @@ const Menu = ({ menu }) => {
 				{menu.map((product) => (
 					<Product key={product.id} product={product} />
 				))}
+			</div>
+			<div>
+				<Basket />
 			</div>
 		</div>
 	);

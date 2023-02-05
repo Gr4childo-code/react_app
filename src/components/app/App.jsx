@@ -1,20 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import Header from '../header';
-
-import Restautants from '../restuatants';
+import Restaurants from '../restaurants';
 
 const App = ({ restaurants }) => {
 	return (
 		<div>
 			<Header />
-			<Restautants restaurants={restaurants} />
+			<Restaurants />
 		</div>
 	);
-};
-App.propTypes = {
-	restaurants: PropTypes.array,
 };
 
 export default App;
