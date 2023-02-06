@@ -7,8 +7,6 @@ import Button from '../button';
 import { orderProductsSelector, totalPriceSelector } from '../../redux/selectors';
 
 const Basket = ({ title = 'Basket', totalPrice, orderProducts }) => {
-	console.log('basket');
-
 	if (!totalPrice) {
 		return (
 			<div className={styles.basket}>
@@ -39,8 +37,6 @@ const Basket = ({ title = 'Basket', totalPrice, orderProducts }) => {
 };
 
 export default connect((state) => {
-	console.log('connect');
-
 	return {
 		orderProducts: orderProductsSelector(state),
 		totalPrice: totalPriceSelector(state),
