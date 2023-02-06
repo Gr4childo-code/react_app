@@ -24,10 +24,10 @@ const BasketItem = ({ product, amount, totalPrice, increment, decrement, remove 
 	);
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-	increment: () => dispatch(increment(ownProps.product.id)),
-	decrement: () => dispatch(decrement(ownProps.product.id)),
-	remove: () => dispatch(remove(ownProps.product.id)),
+const mapDispatchToProps = (dispatch, Props) => ({
+	increment: () => dispatch(increment(Props.product.id)),
+	decrement: () => dispatch(decrement(Props.product.id)),
+	remove: () => dispatch(remove(Props.product.id)),
 });
 
 export default connect(null, mapDispatchToProps)(BasketItem);
