@@ -4,8 +4,11 @@ import itemStyles from './basket-item/Basket-item.module.css';
 import BasketItem from './basket-item';
 import styles from './Basket.module.css';
 import Button from '../button';
+import { orderProductsSelector, totalPriceSelector } from '../../redux/selectors';
 
 const Basket = ({ title = 'Basket', totalPrice, orderProducts }) => {
+	console.log('basket');
+
 	if (!totalPrice) {
 		return (
 			<div className={styles.basket}>
@@ -36,19 +39,10 @@ const Basket = ({ title = 'Basket', totalPrice, orderProducts }) => {
 };
 
 export default connect((state) => {
-	const allProducts = state.restaurants.flatMap((restaurant) => restaurant.menu);
+	console.log('connect');
 
-	const orderProducts = Object.keys(state.order)
-		.filter((productId) => state.order[productId] > 0)
-		.map((productId) => allProducts.find((product) => product.id === productId))
-		.map((product) => ({
-			product: product,
-			amount: state.order[product.id],
-			allTotal: state.order[product.id] * product.price,
-		}));
-
-	const totalPrice = orderProducts.reduce((acc, { allTotal }) => acc + allTotal, 0);
-	// console.log(orderProducts);
-	// console.log(totalPrice);
-	return { orderProducts, totalPrice };
+	return {
+		orderProducts: orderProductsSelector(state),
+		totalPrice: totalPriceSelector(state),
+	};
 })(Basket);
