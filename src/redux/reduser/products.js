@@ -6,11 +6,11 @@ const defaultProducts = normalizedProducts.reduce(
 	}),
 	{}
 );
-export default (products = defaultProducts, action) => {
+export default (state = defaultProducts, action) => {
 	const { type } = action;
 
 	switch (type) {
 		default:
-			return products;
+			return state;
 	}
 };

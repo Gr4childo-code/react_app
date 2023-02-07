@@ -5,6 +5,7 @@ import BasketItem from './basket-item';
 import styles from './Basket.module.css';
 import Button from '../button';
 import { orderProductsSelector, totalPriceSelector } from '../../redux/selectors';
+import { createStructuredSelector } from 'reselect';
 
 const Basket = ({ title = 'Basket', totalPrice, orderProducts }) => {
 	if (!totalPrice) {
@@ -36,9 +37,9 @@ const Basket = ({ title = 'Basket', totalPrice, orderProducts }) => {
 	);
 };
 
-export default connect((state) => {
-	return {
-		orderProducts: orderProductsSelector(state),
-		totalPrice: totalPriceSelector(state),
-	};
-})(Basket);
+const mapStateToProps = createStructuredSelector({
+	totalPrice: totalPriceSelector,
+	orderProducts: orderProductsSelector,
+});
+
+export default connect(mapStateToProps)(Basket);

@@ -20,12 +20,6 @@ const Menu = ({ menu }) => {
 };
 
 Menu.propTypes = {
-	menu: PropTypes.arrayOf(
-		PropTypes.shape(
-			{
-				id: PropTypes.string.isRequired,
-			}.isRequired
-		)
-	),
+	menu: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 export default Menu;

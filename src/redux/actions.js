@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, REMOVE } from './constants';
+import { INCREMENT, DECREMENT, REMOVE, ADD_REVIEW } from './constants';
 
 export const increment = (id) => ({
 	type: INCREMENT,
@@ -9,3 +9,10 @@ export const decrement = (id) => ({
 	id,
 });
 export const remove = (id) => ({ type: REMOVE, id });
+
+export const addReview = (review, restaurantId) => ({
+	type: ADD_REVIEW,
+	review,
+	restaurantId,
+	generateId: ['reviewId', 'userId'],
+});
